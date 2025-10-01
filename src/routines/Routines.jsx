@@ -1,6 +1,9 @@
 import { useAuth } from "../auth/AuthContext";
 import { getRoutines } from "../api/routines";
 import { useEffect, useState } from "react";
+
+import RoutineForm from "./RoutineForm";
+
 export default function Routines() {
   const { token } = useAuth();
   const [routineList, setRoutineList] = useState([]);
@@ -21,7 +24,11 @@ export default function Routines() {
           return <li key={routine.id}>{routine.name}</li>;
         })}
       </ul>
-      {token ? <p>Display Form</p> : <p>Do not display form</p>}
+      {!token ? (
+        <p>Please Sign in to create routines</p>
+      ) : (
+        <RoutineForm syncRoutines={syncRoutines} />
+      )}
     </section>
   );
 }
