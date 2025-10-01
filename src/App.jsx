@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router";
 import Register from "./auth/Register";
 import Login from "./auth/Login";
 import ActivitiesPage from "./activities/ActivitiesPage";
+import ActivityDetails from "./activities/ActivitiesPage";
 import Error404 from "./Error404.jsx";
 import Layout from "./layout/Layout";
 import HomePage from "./layout/HomePage";
@@ -20,7 +21,11 @@ export default function App() {
 
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/activities" element={<ActivitiesPage />} />
+
+          <Route path="/activities" element={<ActivitiesPage />}>
+            <Route path=":activityId" element={<ActivityDetails />} />
+          </Route>
+
           <Route path="*" element={<Error404 />} />
         </Route>
       </Routes>
