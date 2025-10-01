@@ -44,7 +44,11 @@ export default function ActivitiesPage() {
       {!selectedActivity ? (
         <p>Please Select an Activity to view</p>
       ) : (
-        <ActivityDetails selectedActivity={selectedActivity} />
+        <ActivityDetails
+          selectedActivity={selectedActivity}
+          setSelectedActivity={setSelectedActivity}
+          syncActivities={syncActivities}
+        />
       )}
     </>
   );
